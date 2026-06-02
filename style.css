@@ -1,0 +1,663 @@
+/* ═══════════════════════════════════════════════
+   CRUFFY — Try & Guess
+   style.css
+   ─────────────────────────────────────────────
+   Secciones:
+   1. Reset & base
+   2. Layout de la app y steps
+   3. Header
+   4. Contenido general
+   5. Cómo funciona
+   6. Formulario
+   7. Botones
+   8. Paso "taste" — tarjeta y sabores
+   9. Spinner / transición
+   10. Resultado + ticket
+   11. Countdown
+   12. Botón Instagram + nota final
+   13. Animaciones
+   ═══════════════════════════════════════════════ */
+
+
+/* ─── 1. Reset & base ─────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0E0E0E;
+  color: #FFF;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Reduce animaciones para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ─── 2. Layout: app y steps ──────────────────── */
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+}
+
+.step {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.step.active {
+  display: flex;
+}
+
+
+/* ─── 3. Header ───────────────────────────────── */
+
+.header {
+  background: #FFD200;
+  padding: 18px 24px 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0E0E0E;
+  letter-spacing: -1px;
+}
+
+.tagline {
+  font-size: 10px;
+  font-weight: 700;
+  color: #0E0E0E;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-top: 2px;
+}
+
+
+/* ─── 4. Contenido general ────────────────────── */
+
+.content {
+  flex: 1;
+  padding: 28px 22px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spacer {
+  flex: 1;
+  min-height: 24px;
+}
+
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #181818;
+  border: 1px solid #252525;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+
+.step-title {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.step-sub {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+
+/* ─── 5. Cómo funciona ────────────────────────── */
+
+.how-card {
+  background: #111;
+  border: 1px solid #1E1E1E;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.how-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.how-list {
+  list-style: none;
+}
+
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.how-step:last-child {
+  margin-bottom: 0;
+}
+
+.how-dot {
+  width: 6px;
+  height: 6px;
+  background: #FFD200;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.how-text {
+  font-size: 14px;
+  color: #AAA;
+  line-height: 1.45;
+}
+
+
+/* ─── 6. Formulario ───────────────────────────── */
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555;
+  display: block;
+  margin-bottom: 9px;
+}
+
+.label-optional {
+  font-size: 10px;
+  color: #3A3A3A;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.field input {
+  width: 100%;
+  background: #111;
+  border: 1.5px solid #222;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 16px;   /* ≥16px evita zoom en iOS */
+  color: #FFF;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field input:focus {
+  border-color: #FFD200;
+  /* Visible focus ring para teclado */
+  box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.18);
+}
+
+.field input::placeholder {
+  color: #3A3A3A;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field-note {
+  font-size: 11px;
+  color: #444;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.alert {
+  background: #1A1200;
+  border: 1px solid #3A2D00;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #AA8800;
+  margin-bottom: 14px;
+  display: none;
+}
+
+.alert.visible {
+  display: block;
+}
+
+
+/* ─── 7. Botones ──────────────────────────────── */
+
+.btn-primary {
+  width: 100%;
+  background: #FFD200;
+  color: #0E0E0E;
+  border: none;
+  border-radius: 14px;
+  padding: 17px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.1s, opacity 0.1s;
+}
+
+.btn-primary:hover {
+  opacity: 0.92;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid #FFF;
+  outline-offset: 3px;
+}
+
+
+/* ─── 8. Taste — tarjeta y sabores ───────────── */
+
+.taste-card {
+  background: #111;
+  border: 1px solid #1E1E1E;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.taste-icon {
+  font-size: 48px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.taste-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.taste-desc {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.guess-hint {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #444;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.flavor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.flavor-btn {
+  background: #111;
+  border: 1.5px solid #222;
+  border-radius: 20px;
+  padding: 30px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+  font-family: 'Poppins', sans-serif;
+  color: #FFF;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flavor-btn:hover {
+  border-color: #333;
+  background: #161616;
+}
+
+.flavor-btn:active {
+  transform: scale(0.95);
+}
+
+.flavor-btn:focus-visible {
+  outline: none;
+  border-color: #FFD200;
+  box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.18);
+}
+
+.f-emoji {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.f-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.f-desc {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+}
+
+
+/* ─── 9. Spinner / transición ─────────────────── */
+
+.spinner-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 18px;
+}
+
+.spin-ring {
+  width: 42px;
+  height: 42px;
+  border: 3px solid #1E1E1E;
+  border-top: 3px solid #FFD200;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.spin-text {
+  font-size: 14px;
+  color: #555;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ─── 10. Resultado + ticket ──────────────────── */
+
+.result-badge {
+  border-radius: 20px;
+  padding: 28px 22px;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.result-badge.correct {
+  background: #FFD200;
+}
+
+.result-badge.wrong {
+  background: #F4956A;
+}
+
+.r-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.r-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0E0E0E;
+}
+
+.r-sub {
+  font-size: 13px;
+  color: #333;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.ticket {
+  background: #111;
+  border: 1px solid #1E1E1E;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ticket-top {
+  background: #F4956A;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.t-event-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5A2500;
+  opacity: 0.75;
+}
+
+.t-event-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0E0E0E;
+}
+
+.t-section {
+  padding: 18px 20px;
+  border-bottom: 1px solid #1A1A1A;
+}
+
+.t-section:last-child {
+  border-bottom: none;
+}
+
+.t-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.price-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-desc {
+  font-size: 13px;
+  color: #777;
+}
+
+.p-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #CCC;
+}
+
+.price-item.highlight .p-desc {
+  color: #FFD200;
+  font-size: 13px;
+}
+
+.price-item.highlight .p-price {
+  color: #FFD200;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.code-wrap {
+  background: #0A0A0A;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.code-val {
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFD200;
+  letter-spacing: 3px;
+}
+
+.code-note {
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+}
+
+
+/* ─── 11. Countdown ───────────────────────────── */
+
+.cd-wrap {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.cd-label {
+  font-size: 10px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.cd-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cd-box {
+  background: #0A0A0A;
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-width: 54px;
+  text-align: center;
+}
+
+.cd-num {
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFD200;
+  display: block;
+  line-height: 1;
+}
+
+.cd-unit {
+  font-size: 9px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  display: block;
+}
+
+
+/* ─── 12. Botón Instagram + nota final ────────── */
+
+.btn-ig {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #2A2A2A;
+  color: #888;
+  border-radius: 14px;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-ig:hover {
+  background: #1A1A1A;
+  color: #FFF;
+  border-color: #444;
+}
+
+.btn-ig:active {
+  background: #1A1A1A;
+  color: #FFF;
+}
+
+.btn-ig:focus-visible {
+  outline: 3px solid #FFD200;
+  outline-offset: 3px;
+}
+
+.show-note {
+  text-align: center;
+  font-size: 11px;
+  color: #333;
+  padding-top: 4px;
+}
+
+
+/* ─── 13. Animaciones ─────────────────────────── */
+
+@keyframes popIn {
+  0%   { transform: scale(0.75); opacity: 0; }
+  65%  { transform: scale(1.04); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+.pop-in {
+  animation: popIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}

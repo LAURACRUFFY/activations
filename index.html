@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="Prueba Cruffy — fruta liofilizada de Colombia, sin azúcar. Adivina el sabor y gana un descuento." />
+  <title>Cruffy — Try &amp; Guess</title>
+
+  <!-- Preconnect para reducir latencia de fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" role="main">
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 0: LANDING                           -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step active" id="step-0" aria-label="Bienvenida">
+      <header class="header" role="banner">
+        <div class="brand" aria-label="Cruffy">CRUFFY</div>
+        <div class="tagline" aria-hidden="true">Real crunchy fruit snack</div>
+      </header>
+
+      <div class="content">
+        <div class="partner-badge" id="partner-badge" aria-label="Activación en colaboración con">x 2LR Club</div>
+
+        <h1 class="step-title">¿Lo<br />adivinas?</h1>
+        <p class="step-sub">
+          Fruta liofilizada traída de Colombia. Sin azúcar, sin nada. Solo fruta.
+          Prueba y dinos qué sabor sientes.
+        </p>
+
+        <div class="how-card" aria-label="Cómo funciona">
+          <div class="how-label" aria-hidden="true">Cómo funciona</div>
+          <ol class="how-list">
+            <li class="how-step">
+              <span class="how-dot" aria-hidden="true"></span>
+              <span class="how-text">Nos dices quién eres</span>
+            </li>
+            <li class="how-step">
+              <span class="how-dot" aria-hidden="true"></span>
+              <span class="how-text">Pruebas un trozo</span>
+            </li>
+            <li class="how-step">
+              <span class="how-dot" aria-hidden="true"></span>
+              <span class="how-text">Adivinas el sabor</span>
+            </li>
+            <li class="how-step">
+              <span class="how-dot" aria-hidden="true"></span>
+              <span class="how-text">Descubres qué ganaste</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="spacer"></div>
+        <button class="btn-primary" id="btn-start" type="button">Empezar</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 1: FORM                              -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step" id="step-1" aria-label="Formulario de datos" aria-hidden="true">
+      <header class="header" role="banner">
+        <div class="brand" aria-label="Cruffy">CRUFFY</div>
+        <div class="tagline" aria-hidden="true">Antes de probar</div>
+      </header>
+
+      <div class="content">
+        <h1 class="step-title">Cuéntanos<br />un poco</h1>
+        <p class="step-sub">Nada complicado. Solo para saber con quién estamos hablando.</p>
+
+        <div class="alert" id="form-alert" role="alert" aria-live="assertive" aria-atomic="true">
+          Necesitamos al menos un contacto (WhatsApp o email) para mandarte lo que ganas.
+        </div>
+
+        <form id="lead-form" novalidate>
+          <div class="field">
+            <label for="f-nombre">Tu nombre</label>
+            <input
+              type="text"
+              id="f-nombre"
+              name="nombre"
+              placeholder="Cómo te llaman"
+              autocomplete="given-name"
+              required
+              aria-required="true"
+            />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-whatsapp">WhatsApp</label>
+              <input
+                type="tel"
+                id="f-whatsapp"
+                name="whatsapp"
+                placeholder="+39…"
+                autocomplete="tel"
+                inputmode="tel"
+                aria-describedby="contact-note"
+              />
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input
+                type="email"
+                id="f-email"
+                name="email"
+                placeholder="tu@email.com"
+                autocomplete="email"
+                inputmode="email"
+                aria-describedby="contact-note"
+              />
+            </div>
+          </div>
+          <p class="field-note" id="contact-note">
+            Al menos uno. Te mandamos el resultado por donde prefieras.
+          </p>
+
+          <div class="field" style="margin-top: 6px">
+            <label for="f-zona">
+              ¿Por qué zona de Milán entrenas?
+              <span class="label-optional" aria-label="opcional">— opcional</span>
+            </label>
+            <input
+              type="text"
+              id="f-zona"
+              name="zona"
+              placeholder="Navigli, Isola, Porta Romana…"
+              aria-describedby="zona-hint"
+            />
+            <p class="field-note" id="zona-hint" style="margin-top:6px">
+              Nos ayuda a llegar a tu gimnasio.
+            </p>
+          </div>
+
+          <div class="spacer"></div>
+          <button class="btn-primary" type="submit">A probar →</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 2: TASTE                             -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step" id="step-2" aria-label="Elige el sabor" aria-hidden="true">
+      <header class="header" role="banner">
+        <div class="brand" aria-label="Cruffy">CRUFFY</div>
+        <div class="tagline" aria-hidden="true">Momento de la verdad</div>
+      </header>
+
+      <div class="content">
+        <div class="taste-card">
+          <span class="taste-icon" aria-hidden="true">👆</span>
+          <h2 class="taste-title">Toma un trozo</h2>
+          <p class="taste-desc">
+            Laura te da a probar. Mastícalo tranquilo. Cierra los ojos si quieres.
+            ¿Qué fruta es?
+          </p>
+        </div>
+
+        <p class="guess-hint" aria-label="Selecciona lo que sientes">¿Qué sientes?</p>
+
+        <div class="flavor-grid" role="group" aria-label="Opciones de sabor">
+          <button class="flavor-btn" type="button" data-flavor="mango" aria-label="Mango — dulce y tropical">
+            <span class="f-emoji" aria-hidden="true">🥭</span>
+            <span class="f-name">Mango</span>
+            <span class="f-desc">Dulce, tropical</span>
+          </button>
+          <button class="flavor-btn" type="button" data-flavor="pina" aria-label="Piña — fresca y ácida">
+            <span class="f-emoji" aria-hidden="true">🍍</span>
+            <span class="f-name">Piña</span>
+            <span class="f-desc">Fresca, ácida</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 2B: TRANSITION                       -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step" id="step-2b" aria-label="Cargando resultado" aria-hidden="true">
+      <header class="header" role="banner">
+        <div class="brand" aria-label="Cruffy">CRUFFY</div>
+        <div class="tagline" aria-hidden="true">Un momento…</div>
+      </header>
+
+      <div class="content">
+        <div class="spinner-wrap" role="status" aria-live="polite" aria-label="Revelando tu sabor, espera un momento">
+          <div class="spin-ring" aria-hidden="true"></div>
+          <p class="spin-text" aria-hidden="true">Revelando tu sabor…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 3: RESULT + TICKET                   -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step" id="step-3" aria-label="Tu resultado" aria-hidden="true">
+      <header class="header" role="banner">
+        <div class="brand" aria-label="Cruffy">CRUFFY</div>
+        <div class="tagline" aria-hidden="true">Tu resultado</div>
+      </header>
+
+      <div class="content">
+
+        <div class="result-badge correct pop-in" id="result-badge" role="status" aria-live="polite" aria-atomic="true">
+          <span class="r-icon" id="r-icon" aria-hidden="true">🏆</span>
+          <p class="r-title" id="r-title">¡Paladar de experto!</p>
+          <p class="r-sub" id="r-sub">No cualquiera lo adivina a la primera. Eres de los nuestros.</p>
+        </div>
+
+        <div class="ticket" aria-label="Tu ticket de descuento">
+          <div class="ticket-top">
+            <p class="t-event-label" aria-hidden="true">Activación</p>
+            <p class="t-event-name" id="ticket-event">2LR Club · Junio 2026</p>
+          </div>
+
+          <div class="t-section">
+            <p class="t-label" id="prices-label">Si quieres el pack completo</p>
+            <ul class="price-list" aria-labelledby="prices-label">
+              <li class="price-item">
+                <span class="p-desc">1 pack</span>
+                <span class="p-price">€3.99</span>
+              </li>
+              <li class="price-item highlight">
+                <span class="p-desc">2 packs — mango + piña</span>
+                <span class="p-price">€7</span>
+              </li>
+              <li class="price-item">
+                <span class="p-desc">6 packs · semana entera</span>
+                <span class="p-price">€20</span>
+              </li>
+              <li class="price-item">
+                <span class="p-desc">12 packs · dos semanas</span>
+                <span class="p-price">€40</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="t-section">
+            <p class="t-label" id="code-label">Tu código para pedirlo online</p>
+            <div class="code-wrap" aria-labelledby="code-label">
+              <p class="code-val" id="ticket-code">CRUFFY2LR</p>
+              <p class="code-note" id="ticket-pct">12% OFF en cruffyfoods.com</p>
+            </div>
+
+            <div class="cd-wrap" aria-label="Tiempo restante del código">
+              <p class="cd-label" aria-hidden="true">Válido durante</p>
+              <div class="cd-row" role="timer" aria-live="off">
+                <div class="cd-box">
+                  <span class="cd-num" id="cd-d" aria-label="días">07</span>
+                  <span class="cd-unit" aria-hidden="true">días</span>
+                </div>
+                <div class="cd-box">
+                  <span class="cd-num" id="cd-h" aria-label="horas">00</span>
+                  <span class="cd-unit" aria-hidden="true">horas</span>
+                </div>
+                <div class="cd-box">
+                  <span class="cd-num" id="cd-m" aria-label="minutos">00</span>
+                  <span class="cd-unit" aria-hidden="true">min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /ticket -->
+
+        <a
+          class="btn-ig"
+          href="https://instagram.com/cruffy_eu"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Síguenos en Instagram, abre en nueva pestaña"
+        >
+          Síguenos en Instagram — @cruffy_eu
+        </a>
+
+        <p class="show-note" aria-live="polite">Muéstrale esta pantalla a Laura</p>
+
+      </div>
+    </section>
+
+  </div><!-- /app -->
+
+  <script src="app.js"></script>
+</body>
+</html>
