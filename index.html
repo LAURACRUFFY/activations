@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Playfair+Display:wght@900&display=swap"
     rel="stylesheet"
   />
 
@@ -25,7 +25,7 @@
     <section class="step active" id="step-0" aria-label="Bienvenida">
       <header class="header" role="banner">
         <div class="collab-left">
-          <div class="brand" aria-label="Cruffy">CRUFFY</div>
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
           <div class="collab-sub" aria-hidden="true">Real crunchy fruit snack</div>
         </div>
         <div class="collab-right" aria-label="In partnership con SPH Milano">
@@ -79,7 +79,7 @@
 
       <header class="header" role="banner">
         <div class="collab-left">
-          <div class="brand" aria-label="Cruffy">CRUFFY</div>
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
           <div class="collab-sub" aria-hidden="true">Prima di assaggiare</div>
         </div>
         <div class="collab-right" aria-label="In partnership con SPH Milano">
@@ -186,7 +186,7 @@
     <section class="step" id="step-2" aria-label="Scegli il sapore" aria-hidden="true">
       <header class="header" role="banner">
         <div class="collab-left">
-          <div class="brand" aria-label="Cruffy">CRUFFY</div>
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
           <div class="collab-sub" aria-hidden="true">Il momento della verità</div>
         </div>
         <div class="collab-right" aria-label="In partnership con SPH Milano">
@@ -231,7 +231,7 @@
     <section class="step" id="step-2b" aria-label="Caricamento risultato" aria-hidden="true">
       <header class="header" role="banner">
         <div class="collab-left">
-          <div class="brand" aria-label="Cruffy">CRUFFY</div>
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
           <div class="collab-sub" aria-hidden="true">Un momento…</div>
         </div>
         <div class="collab-right" aria-label="In partnership con SPH Milano">
@@ -252,12 +252,12 @@
     </section>
 
     <!-- ══════════════════════════════════════════ -->
-    <!-- STEP 3: RESULT + TICKET                   -->
+    <!-- STEP 3: RESULT + IG GATE                  -->
     <!-- ══════════════════════════════════════════ -->
     <section class="step" id="step-3" aria-label="Il tuo risultato" aria-hidden="true">
       <header class="header" role="banner">
         <div class="collab-left">
-          <div class="brand" aria-label="Cruffy">CRUFFY</div>
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
           <div class="collab-sub" aria-hidden="true">Il tuo risultato</div>
         </div>
         <div class="collab-right" aria-label="In partnership con SPH Milano">
@@ -277,7 +277,66 @@
           <p class="r-sub" id="r-sub">Non tutti lo indovinano al primo tentativo. Sei dei nostri.</p>
         </div>
 
-        <div class="ticket" aria-label="Il tuo ticket sconto">
+        <!-- Instagram gate -->
+        <div class="ig-gate">
+          <p class="ig-gate-label" aria-hidden="true">Per riscattare il premio</p>
+          <a
+            class="btn-primary"
+            href="https://instagram.com/cruffy_eu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Seguici su Instagram @cruffy_eu, apre in nuova scheda"
+          >
+            Seguici su Instagram — @cruffy_eu
+          </a>
+          <p class="ig-gate-note">Poi mostra questa schermata al team Cruffy</p>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Bottone riservato al team per sbloccare il premio -->
+        <button
+          class="btn-unlock"
+          id="btn-unlock"
+          type="button"
+          aria-label="Sblocca il premio — solo per il team Cruffy"
+        >
+          Team Cruffy — Sblocca il premio →
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- STEP 4: PRIZE REVEAL                      -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="step" id="step-4" aria-label="Il tuo premio" aria-hidden="true">
+      <header class="header" role="banner">
+        <div class="collab-left">
+          <div class="brand" aria-label="Cruffy">Cruffy</div>
+          <div class="collab-sub" aria-hidden="true">Il tuo premio</div>
+        </div>
+        <div class="collab-right" aria-label="In partnership con SPH Milano">
+          <span class="collab-times" aria-hidden="true">×</span>
+          <div class="collab-partner-block" aria-hidden="true">
+            <div class="collab-sph">SPH</div>
+            <div class="collab-sph-city">MILANO</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+
+        <!-- Premio aleatorio -->
+        <div class="prize-card pop-in" id="prize-card" role="status" aria-live="polite" aria-atomic="true">
+          <span class="prize-icon" id="prize-icon" aria-hidden="true">⚡</span>
+          <p class="prize-super" aria-hidden="true">Hai vinto</p>
+          <h2 class="prize-title" id="prize-title">Snack energetico gratis</h2>
+          <p class="prize-desc" id="prize-desc">Portalo a casa — è tuo.</p>
+        </div>
+
+        <!-- Ticket con código descuento -->
+        <div class="ticket" aria-label="Il tuo codice sconto">
           <div class="ticket-top">
             <p class="t-event-label" aria-hidden="true">Attivazione</p>
             <p class="t-event-name" id="ticket-event">SPH Milano · Giugno 2026</p>
@@ -331,16 +390,6 @@
             </div>
           </div>
         </div><!-- /ticket -->
-
-        <a
-          class="btn-ig"
-          href="https://instagram.com/cruffy_eu"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Seguici su Instagram, apre in nuova scheda"
-        >
-          Seguici su Instagram — @cruffy_eu
-        </a>
 
         <p class="show-note" aria-live="polite">Mostra questa schermata al team Cruffy</p>
 

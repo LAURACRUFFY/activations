@@ -82,10 +82,11 @@ body {
 }
 
 .brand {
-  font-size: 22px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
   font-weight: 900;
-  color: #FFD200;
-  letter-spacing: -0.5px;
+  color: #FFF;
+  letter-spacing: 0;
   line-height: 1;
 }
 
@@ -289,6 +290,13 @@ body {
 .btn-primary:focus-visible {
   outline: 3px solid #FFF;
   outline-offset: 3px;
+}
+
+/* Permite usar btn-primary en <a> */
+a.btn-primary {
+  display: block;
+  text-decoration: none;
+  text-align: center;
 }
 
 
@@ -729,7 +737,95 @@ body {
   margin: 18px 0 16px;
 }
 
-/* ─── 15. Animaciones ─────────────────────────── */
+/* ─── 15. IG Gate (step 3) ───────────────────── */
+
+.ig-gate {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.ig-gate-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8ECFB4;
+  margin-bottom: 14px;
+}
+
+.ig-gate-note {
+  font-size: 12px;
+  color: #444;
+  margin-top: 12px;
+  line-height: 1.55;
+}
+
+.btn-unlock {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #1B5E42;
+  color: #8ECFB4;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-unlock:hover  { background: #1B5E42; color: #FFF; }
+.btn-unlock:active { background: #164D35; color: #FFF; }
+
+.btn-unlock:focus-visible {
+  outline: 3px solid #8ECFB4;
+  outline-offset: 3px;
+}
+
+
+/* ─── 16. Prize card (step 4) ────────────────── */
+
+.prize-card {
+  background: #FFD200;
+  border-radius: 24px;
+  padding: 32px 24px 28px;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.prize-icon {
+  font-size: 52px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.prize-super {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.prize-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #0E0E0E;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.prize-desc {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+
+/* ─── 17. Animaciones ─────────────────────────── */
 
 @keyframes popIn {
   0%   { transform: scale(0.75); opacity: 0; }

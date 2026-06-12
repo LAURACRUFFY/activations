@@ -39,6 +39,64 @@ const FLAVOR  = P.get('flavor')  || '';
 const FECHA   = P.get('fecha')   || 'Giugno 2026';
 
 
+/* ─── Prize pool ────────────────────────────────
+   Distribuisce i premi tra ~55 partecipanti.
+   I contatori vengono salvati in localStorage.
+   ─────────────────────────────────────────────── */
+const PRIZE_POOL = [
+  {
+    id:    'energy',
+    icon:  '⚡',
+    title: 'Snack energetico gratis',
+    desc:  'Portalo a casa — è tuo.',
+    count: 30,
+  },
+  {
+    id:    'packs',
+    icon:  '🎁',
+    title: '8 pack di Cruffy gratis',
+    desc:  'Tutta la settimana rifornito.',
+    count: 8,
+  },
+  {
+    id:    'taste',
+    icon:  '🍃',
+    title: 'Assaggia l\'altro gusto',
+    desc:  'Un assaggio dell\'altro sapore, qui con noi.',
+    count: 17,
+  },
+];
+
+function getPrize() {
+  const key = 'cruffy_prizes_' + EVENTO;
+  let remaining;
+  try {
+    remaining = JSON.parse(localStorage.getItem(key) || 'null');
+  } catch (_) { remaining = null; }
+
+  if (!remaining) {
+    remaining = {};
+    PRIZE_POOL.forEach(p => { remaining[p.id] = p.count; });
+  }
+
+  /* Lista ponderada de premios disponibles */
+  const available = [];
+  PRIZE_POOL.forEach(p => {
+    const n = Math.max(0, remaining[p.id] || 0);
+    for (let i = 0; i < n; i++) available.push(p.id);
+  });
+
+  const pickedId = available.length > 0
+    ? available[Math.floor(Math.random() * available.length)]
+    : PRIZE_POOL[0].id; /* fallback si se agotan todos */
+
+  remaining[pickedId] = Math.max(0, (remaining[pickedId] || 0) - 1);
+  try { localStorage.setItem(key, JSON.stringify(remaining)); } catch (_) {}
+
+  return PRIZE_POOL.find(p => p.id === pickedId);
+}
+
+
 /* ─── 2. Navegación entre steps ───────────────── */
 
 function goTo(stepId) {
@@ -121,15 +179,15 @@ function guess(flavor) {
 
   setTimeout(() => {
     const correct = FLAVOR === '' || flavor === FLAVOR;
-    buildTicket(correct, flavor);
+    buildResult(correct, flavor);
     goTo(3);
   }, 1100);
 }
 
 
-/* ─── 5. Ticket y resultado ───────────────────── */
+/* ─── 5. Resultado (step 3) ───────────────────── */
 
-function buildTicket(correct, flavorChosen) {
+function buildResult(correct, flavorChosen) {
   const badge = document.getElementById('result-badge');
   const icon  = document.getElementById('r-icon');
   const title = document.getElementById('r-title');
@@ -141,16 +199,24 @@ function buildTicket(correct, flavorChosen) {
     title.textContent = 'Palato da esperto!';
     sub.textContent   = 'Non tutti lo indovinano al primo tentativo. Sei dei nostri.';
   } else {
-    badge.className = 'result-badge wrong pop-in';
-    icon.textContent = '🎯';
+    badge.className   = 'result-badge wrong pop-in';
+    icon.textContent  = '🎯';
     const altroSapore = flavorChosen === 'mango' ? 'Ananas' : 'Mango';
     title.textContent = 'Era ' + altroSapore;
-    sub.textContent   = 'A volte inganna. Ora lo sai — e hai anche il codice.';
+    sub.textContent   = 'A volte inganna. Ora lo sai — vai avanti per il premio.';
   }
+}
 
-  const descuento = correct ? '12%' : '8%';
+
+/* ─── 6. Premio (step 4) ──────────────────────── */
+
+function buildPrize(prize) {
+  document.getElementById('prize-icon').textContent  = prize.icon;
+  document.getElementById('prize-title').textContent = prize.title;
+  document.getElementById('prize-desc').textContent  = prize.desc;
+
   document.getElementById('ticket-code').textContent  = CODE;
-  document.getElementById('ticket-pct').textContent   = descuento + ' OFF su cruffyfoods.com';
+  document.getElementById('ticket-pct').textContent   = '12% OFF su cruffyfoods.com';
   document.getElementById('ticket-event').textContent = PARTNER + ' · ' + FECHA;
 
   /* Countdown 7 días desde ahora */
@@ -163,7 +229,7 @@ function buildTicket(correct, flavorChosen) {
 }
 
 
-/* ─── 6. Countdown ────────────────────────────── */
+/* ─── 7. Countdown ────────────────────────────── */
 
 function runCountdown(expiry) {
   let intervalId;
@@ -186,25 +252,18 @@ function runCountdown(expiry) {
 }
 
 
-/* ─── 7. Sesión persistida ────────────────────
-   Si el usuario ya jugó y su código sigue vigente,
-   se salta directo al resultado guardado.
+/* ─── 8. Sesión persistida ────────────────────
+   Con el nuevo flujo de premios cada persona debe
+   completar el recorrido completo, así que no
+   restauramos sesiones anteriores.
    ─────────────────────────────────────────────── */
 
 function restoreSession() {
-  try {
-    const exp = parseInt(localStorage.getItem('cruffy_exp_' + EVENTO) || '0', 10);
-    if (exp > Date.now()) {
-      buildTicket(true, 'mango');
-      goTo(3);
-      return true;
-    }
-  } catch (_) {}
   return false;
 }
 
 
-/* ─── 8. Init ────────────────────────────────── */
+/* ─── 9. Init ────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -233,6 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       guess(btn.dataset.flavor);
     });
+  });
+
+  /* Botón de desbloqueo (solo equipo Cruffy) — step 3 → step 4 */
+  document.getElementById('btn-unlock').addEventListener('click', () => {
+    const prize = getPrize();
+    buildPrize(prize);
+    goTo(4);
   });
 
   /* Restaurar sesión previa si existe */
