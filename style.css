@@ -72,27 +72,25 @@ body {
 /* ─── 3. Header ───────────────────────────────── */
 
 .header {
-  background: #FFD200;
-  padding: 18px 24px 14px;
-  text-align: center;
+  background: #0E0E0E;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #FFD200;
   flex-shrink: 0;
 }
 
 .brand {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 900;
-  color: #0E0E0E;
-  letter-spacing: -1px;
+  color: #FFD200;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
 .tagline {
-  font-size: 10px;
-  font-weight: 700;
-  color: #0E0E0E;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  opacity: 0.55;
-  margin-top: 2px;
+  display: none;
 }
 
 
@@ -143,6 +141,7 @@ body {
 .how-card {
   background: #111;
   border: 1px solid #1E1E1E;
+  border-top: 2px solid #1B5E42;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 28px;
@@ -227,8 +226,6 @@ body {
 
 .field input:focus {
   border-color: #FFD200;
-  /* Visible focus ring para teclado */
-  box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.18);
 }
 
 .field input::placeholder {
@@ -300,6 +297,7 @@ body {
 .taste-card {
   background: #111;
   border: 1px solid #1E1E1E;
+  border-top: 2px solid #FFD200;
   border-radius: 20px;
   padding: 32px 24px;
   text-align: center;
@@ -433,7 +431,7 @@ body {
 }
 
 .result-badge.wrong {
-  background: #F4956A;
+  background: #2A7A5A;
 }
 
 .r-icon {
@@ -441,6 +439,12 @@ body {
   display: block;
   margin-bottom: 10px;
 }
+
+.result-badge.correct .r-title,
+.result-badge.correct .r-sub { color: #0E0E0E; }
+
+.result-badge.wrong .r-title { color: #FFF; }
+.result-badge.wrong .r-sub   { color: #B8DECE; }
 
 .r-title {
   font-size: 22px;
@@ -464,7 +468,7 @@ body {
 }
 
 .ticket-top {
-  background: #F4956A;
+  background: #1B5E42;
   padding: 12px 20px;
   text-align: center;
 }
@@ -474,14 +478,14 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #5A2500;
-  opacity: 0.75;
+  color: #8ECFB4;
+  opacity: 0.85;
 }
 
 .t-event-name {
   font-size: 15px;
   font-weight: 700;
-  color: #0E0E0E;
+  color: #FFF;
 }
 
 .t-section {
@@ -650,7 +654,82 @@ body {
 }
 
 
-/* ─── 13. Animaciones ─────────────────────────── */
+/* ─── 13. Header co-branded (global) ─────────── */
+
+.collab-left { }
+
+.collab-sub {
+  font-size: 9px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.collab-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collab-times {
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFD200;
+  opacity: 0.45;
+  line-height: 1;
+}
+
+.collab-partner-block {
+  text-align: right;
+}
+
+.collab-sph {
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFF;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.collab-sph-city {
+  font-size: 8px;
+  font-weight: 700;
+  color: #8ECFB4;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+
+/* ─── 14. Form híbrido Cruffy × SPH ──────────── */
+
+.form-pretitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8ECFB4;
+  margin-bottom: 8px;
+}
+
+.form-card {
+  background: #111;
+  border: 1px solid #222;
+  border-top: 2.5px solid #FFD200;
+  border-radius: 20px;
+  padding: 22px 18px 20px;
+  margin-bottom: 20px;
+}
+
+.form-divider {
+  height: 1px;
+  background: #1A1A1A;
+  margin: 18px 0 16px;
+}
+
+/* ─── 15. Animaciones ─────────────────────────── */
 
 @keyframes popIn {
   0%   { transform: scale(0.75); opacity: 0; }

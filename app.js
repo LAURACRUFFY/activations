@@ -24,9 +24,9 @@
    ─────────────────────────────────────────────── */
 
 const P       = new URLSearchParams(location.search);
-const EVENTO  = P.get('evento')  || 'activacion';
-const CODE    = P.get('code')    || 'CRUFFYDROP';
-const PARTNER = P.get('partner') || '2LR Club';
+const EVENTO  = P.get('evento')  || 'sph-milano';
+const CODE    = P.get('code')    || 'CRUFFYSPH';
+const PARTNER = P.get('partner') || 'SPH Milano';
 const GAS_URL = P.get('sheet')   || 'https://script.google.com/macros/s/AKfycbwEWvXXhW_0uQlVgCQN0UkYahNBllE_Pt_gF7IHoXzaF51yyN09XLzLVDUNPa7SdHRMNg/exec';
 
 /* Pon 'mango' o 'pina' para modo estricto.
@@ -36,7 +36,7 @@ const FLAVOR  = P.get('flavor')  || '';
 
 /* Mes y año mostrado en el ticket.
    Formato libre: "Junio 2026", "Milano · Jun 26", etc. */
-const FECHA   = P.get('fecha')   || 'Junio 2026';
+const FECHA   = P.get('fecha')   || 'Giugno 2026';
 
 
 /* ─── 2. Navegación entre steps ───────────────── */
@@ -138,19 +138,19 @@ function buildTicket(correct, flavorChosen) {
   if (correct) {
     badge.className   = 'result-badge correct pop-in';
     icon.textContent  = '🏆';
-    title.textContent = '¡Paladar de experto!';
-    sub.textContent   = 'No cualquiera lo adivina a la primera. Eres de los nuestros.';
+    title.textContent = 'Palato da esperto!';
+    sub.textContent   = 'Non tutti lo indovinano al primo tentativo. Sei dei nostri.';
   } else {
     badge.className = 'result-badge wrong pop-in';
     icon.textContent = '🎯';
-    const otroSabor = flavorChosen === 'mango' ? 'Piña' : 'Mango';
-    title.textContent = 'Era ' + otroSabor;
-    sub.textContent   = 'A veces engaña. Ahora ya lo tienes — y el código también.';
+    const altroSapore = flavorChosen === 'mango' ? 'Ananas' : 'Mango';
+    title.textContent = 'Era ' + altroSapore;
+    sub.textContent   = 'A volte inganna. Ora lo sai — e hai anche il codice.';
   }
 
   const descuento = correct ? '12%' : '8%';
   document.getElementById('ticket-code').textContent  = CODE;
-  document.getElementById('ticket-pct').textContent   = descuento + ' OFF en cruffyfoods.com';
+  document.getElementById('ticket-pct').textContent   = descuento + ' OFF su cruffyfoods.com';
   document.getElementById('ticket-event').textContent = PARTNER + ' · ' + FECHA;
 
   /* Countdown 7 días desde ahora */
@@ -208,10 +208,9 @@ function restoreSession() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* Partner badge */
-  if (PARTNER) {
-    document.getElementById('partner-badge').textContent = 'x ' + PARTNER;
-  }
+  /* Partner badge (legacy, mantenido por compatibilidad) */
+  const badge = document.getElementById('partner-badge');
+  if (badge && PARTNER) badge.textContent = 'x ' + PARTNER;
 
   /* Botón inicio */
   document.getElementById('btn-start').addEventListener('click', () => goTo(1));
