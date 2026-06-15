@@ -570,6 +570,28 @@ a.btn-primary {
   margin-top: 4px;
 }
 
+.btn-shop {
+  display: block;
+  margin-top: 14px;
+  background: #FFD200;
+  color: #0E0E0E;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.1s, transform 0.1s;
+}
+
+.btn-shop:hover   { opacity: 0.92; }
+.btn-shop:active  { transform: scale(0.97); opacity: 0.85; }
+.btn-shop:focus-visible {
+  outline: 3px solid #FFF;
+  outline-offset: 3px;
+}
+
 
 /* ─── 11. Countdown ───────────────────────────── */
 

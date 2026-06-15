@@ -218,6 +218,7 @@ function buildPrize(prize) {
   document.getElementById('ticket-code').textContent  = CODE;
   document.getElementById('ticket-pct').textContent   = '12% OFF su cruffyfoods.com';
   document.getElementById('ticket-event').textContent = PARTNER + ' · ' + FECHA;
+  document.getElementById('btn-shop').href = 'https://www.cruffyfoods.com/discount/' + CODE + '?redirect=/cart';
 
   /* Countdown 7 días desde ahora */
   const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000;
