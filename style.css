@@ -142,7 +142,7 @@ body {
 .how-card {
   background: #111;
   border: 1px solid #1E1E1E;
-  border-top: 2px solid #1B5E42;
+  border-top: 2px solid #B8623C;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 28px;
@@ -439,7 +439,7 @@ a.btn-primary {
 }
 
 .result-badge.wrong {
-  background: #2A7A5A;
+  background: #C4724A;
 }
 
 .r-icon {
@@ -452,7 +452,7 @@ a.btn-primary {
 .result-badge.correct .r-sub { color: #0E0E0E; }
 
 .result-badge.wrong .r-title { color: #FFF; }
-.result-badge.wrong .r-sub   { color: #B8DECE; }
+.result-badge.wrong .r-sub   { color: #F0C4A8; }
 
 .r-title {
   font-size: 22px;
@@ -476,7 +476,7 @@ a.btn-primary {
 }
 
 .ticket-top {
-  background: #1B5E42;
+  background: #B8623C;
   padding: 12px 20px;
   text-align: center;
 }
@@ -486,7 +486,7 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #8ECFB4;
+  color: #E8A882;
   opacity: 0.85;
 }
 
@@ -716,7 +716,7 @@ a.btn-primary {
 }
 
 .collab-sph {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 900;
   color: #FFF;
   letter-spacing: 2px;
@@ -726,21 +726,21 @@ a.btn-primary {
 .collab-sph-city {
   font-size: 8px;
   font-weight: 700;
-  color: #8ECFB4;
+  color: #E8A882;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-top: 3px;
 }
 
 
-/* ─── 14. Form híbrido Cruffy × SPH ──────────── */
+/* ─── 14. Form híbrido Cruffy × Thriom ───────── */
 
 .form-pretitle {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #8ECFB4;
+  color: #E8A882;
   margin-bottom: 8px;
 }
 
@@ -771,7 +771,7 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: #8ECFB4;
+  color: #E8A882;
   margin-bottom: 14px;
 }
 
@@ -785,8 +785,8 @@ a.btn-primary {
 .btn-unlock {
   width: 100%;
   background: transparent;
-  border: 1px solid #1B5E42;
-  color: #8ECFB4;
+  border: 1px solid #B8623C;
+  color: #E8A882;
   border-radius: 14px;
   padding: 14px;
   font-size: 12px;
@@ -798,11 +798,11 @@ a.btn-primary {
   transition: background 0.2s, color 0.2s;
 }
 
-.btn-unlock:hover  { background: #1B5E42; color: #FFF; }
-.btn-unlock:active { background: #164D35; color: #FFF; }
+.btn-unlock:hover  { background: #B8623C; color: #FFF; }
+.btn-unlock:active { background: #9A4A28; color: #FFF; }
 
 .btn-unlock:focus-visible {
-  outline: 3px solid #8ECFB4;
+  outline: 3px solid #E8A882;
   outline-offset: 3px;
 }
 
