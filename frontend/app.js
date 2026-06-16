@@ -29,6 +29,27 @@ const CODE    = P.get('code')    || 'CRUFFYTHR';
 const PARTNER = P.get('partner') || 'Thriom';
 const GAS_URL = P.get('sheet')   || 'https://script.google.com/macros/s/AKfycbwEWvXXhW_0uQlVgCQN0UkYahNBllE_Pt_gF7IHoXzaF51yyN09XLzLVDUNPa7SdHRMNg/exec';
 
+/* ─── Cruffy backend integration ───────────────
+   El cupón (winner/loser) y los leads salen de la
+   API de Cruffy (única fuente de verdad). El CTA
+   lleva al checkout con el bundle + cupón aplicado.
+   Todo override-able por query string. */
+const CRUFFY_API = (P.get('api')    || 'https://cruffyfoods-production.up.railway.app').replace(/\/+$/, '');
+const STORE      = (P.get('store')  || 'https://cruffyfoods.onrender.com').replace(/\/+$/, '');
+const BUNDLE     =  P.get('bundle') || 'bundle-12-mix';
+
+/* Lead capturado, para enriquecerlo luego con el resultado/cupón. */
+let CURRENT_LEAD = null;
+
+function postLeadToCruffy(lead) {
+  if (!CRUFFY_API) return;
+  fetch(CRUFFY_API + '/api/v1/activations/lead', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(lead),
+  }).catch(() => {});
+}
+
 /* Pon 'mango' o 'pina' para modo estricto.
    Vacío ('') = todos aciertan — bueno para activaciones
    donde el objetivo es generar leads, no filtrar. */
@@ -158,7 +179,11 @@ function submitForm() {
     localStorage.setItem('cruffy_lead_' + Date.now(), JSON.stringify(lead));
   } catch (_) {}
 
-  /* Envía a Google Apps Script sin bloquear la UI */
+  /* Lead → CRM de Cruffy (fuente de verdad). */
+  CURRENT_LEAD = { name: nombre, whatsapp, email, zone: zona, event: EVENTO };
+  postLeadToCruffy(CURRENT_LEAD);
+
+  /* Respaldo opcional a Google Apps Script (legacy, no bloquea la UI). */
   if (GAS_URL) {
     fetch(GAS_URL, {
       method:  'POST',
@@ -174,11 +199,14 @@ function submitForm() {
 
 /* ─── 4. Guess (elección de sabor) ───────────── */
 
+let GAME_WON = false;
+
 function guess(flavor) {
   goTo('2b');
 
   setTimeout(() => {
     const correct = FLAVOR === '' || flavor === FLAVOR;
+    GAME_WON = correct; /* winner = mayor %, loser = menor % */
     buildResult(correct, flavor);
     goTo(3);
   }, 1100);
@@ -210,15 +238,30 @@ function buildResult(correct, flavorChosen) {
 
 /* ─── 6. Premio (step 4) ──────────────────────── */
 
-function buildPrize(prize) {
+function buildPrize(prize, coupon) {
   document.getElementById('prize-icon').textContent  = prize.icon;
   document.getElementById('prize-title').textContent = prize.title;
   document.getElementById('prize-desc').textContent  = prize.desc;
 
-  document.getElementById('ticket-code').textContent  = CODE;
-  document.getElementById('ticket-pct').textContent   = '12% OFF su cruffyfoods.com';
+  /* Cupón desde la API de Cruffy (winner/loser); si falla, usa el code de la URL. */
+  const code = (coupon && coupon.code) || CODE;
+  const pct  = coupon && coupon.type === 'percent'
+    ? coupon.value + '% OFF su cruffyfoods.com'
+    : '12% OFF su cruffyfoods.com';
+
+  document.getElementById('ticket-code').textContent  = code;
+  document.getElementById('ticket-pct').textContent   = pct;
   document.getElementById('ticket-event').textContent = PARTNER + ' · ' + FECHA;
-  document.getElementById('btn-shop').href = 'https://www.cruffyfoods.com/discount/' + CODE + '?redirect=/cart';
+
+  /* CTA → checkout con el bundle 12-mix + cupón aplicado automáticamente. */
+  document.getElementById('btn-shop').href =
+    STORE + '/cart/?add=' + encodeURIComponent(BUNDLE) + '&coupon=' + encodeURIComponent(code);
+
+  /* Enriquece el lead con el resultado y el cupón entregado. */
+  postLeadToCruffy(Object.assign({}, CURRENT_LEAD || {}, {
+    outcome:    GAME_WON ? 'winner' : 'loser',
+    couponCode: code,
+  }));
 
   /* Countdown 7 días desde ahora */
   const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000;
@@ -295,10 +338,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Botón de desbloqueo (solo equipo Cruffy) — step 3 → step 4 */
-  document.getElementById('btn-unlock').addEventListener('click', () => {
+  /* Botón de desbloqueo (solo equipo Cruffy) — step 3 → step 4.
+     Pide el cupón a la API según el resultado (winner/loser). */
+  document.getElementById('btn-unlock').addEventListener('click', async () => {
     const prize = getPrize();
-    buildPrize(prize);
+    const outcome = GAME_WON ? 'winner' : 'loser';
+    let coupon = null;
+    try {
+      const res = await fetch(CRUFFY_API + '/api/v1/activations/coupon?outcome=' + outcome);
+      if (res.ok) coupon = await res.json();
+    } catch (_) { /* fallback al code de la URL */ }
+    buildPrize(prize, coupon);
     goTo(4);
   });
 
