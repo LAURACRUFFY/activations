@@ -45,25 +45,11 @@ const FECHA   = P.get('fecha')   || 'Giugno 2026';
    ─────────────────────────────────────────────── */
 const PRIZE_POOL = [
   {
-    id:    'energy',
-    icon:  '⚡',
-    title: 'Snack energetico gratis',
-    desc:  'Portalo a casa — è tuo.',
-    count: 30,
-  },
-  {
-    id:    'packs',
+    id:    'pack',
     icon:  '🎁',
-    title: '8 pack di Cruffy gratis',
-    desc:  'Tutta la settimana rifornito.',
-    count: 8,
-  },
-  {
-    id:    'taste',
-    icon:  '🍃',
-    title: 'Assaggia l\'altro gusto',
-    desc:  'Un assaggio dell\'altro sapore, qui con noi.',
-    count: 17,
+    title: 'Un pack di Cruffy gratis',
+    desc:  'Ritiralo subito da noi — è tuo.',
+    count: 200,
   },
 ];
 
