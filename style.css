@@ -32,7 +32,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0E0E0E;
+  background: #1A1A18;
   color: #FFF;
   min-height: 100vh;
   display: flex;
@@ -72,7 +72,7 @@ body {
 /* ─── 3. Header ───────────────────────────────── */
 
 .header {
-  background: #0E0E0E;
+  background: #1A1A18;
   padding: 14px 24px;
   display: flex;
   align-items: center;
@@ -745,9 +745,9 @@ a.btn-primary {
 }
 
 .form-card {
-  background: #111;
-  border: 1px solid #222;
-  border-top: 2.5px solid #FFD200;
+  background: #F5EDE0;
+  border: 1px solid #DDD0C4;
+  border-top: 2.5px solid #B8623C;
   border-radius: 20px;
   padding: 22px 18px 20px;
   margin-bottom: 20px;
@@ -755,8 +755,35 @@ a.btn-primary {
 
 .form-divider {
   height: 1px;
-  background: #1A1A1A;
+  background: #E8DDD4;
   margin: 18px 0 16px;
+}
+
+/* Inputs y labels dentro del form card claro */
+.form-card .field label {
+  color: #6A5040;
+}
+
+.form-card .label-optional {
+  color: #9A8070;
+}
+
+.form-card .field input {
+  background: #FFFAF6;
+  border: 1.5px solid #DDD0C4;
+  color: #2A1F14;
+}
+
+.form-card .field input::placeholder {
+  color: #B0968A;
+}
+
+.form-card .field input:focus {
+  border-color: #B8623C;
+}
+
+.form-card .field-note {
+  color: #9A8070;
 }
 
 /* ─── 15. IG Gate (step 3) ───────────────────── */
