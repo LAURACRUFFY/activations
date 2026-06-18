@@ -24,9 +24,9 @@
    ─────────────────────────────────────────────── */
 
 const P       = new URLSearchParams(location.search);
-const EVENTO  = P.get('evento')  || 'thriom-milano';
-const CODE    = P.get('code')    || 'CRUFFYTHRIOM';
-const PARTNER = P.get('partner') || 'Thriom';
+const EVENTO  = P.get('evento')  || 'milago-milano';
+const CODE    = P.get('code')    || 'CRUFFYMILAGO';
+const PARTNER = P.get('partner') || 'Milago';
 const GAS_URL = P.get('sheet')   || 'https://script.google.com/macros/s/AKfycbwEWvXXhW_0uQlVgCQN0UkYahNBllE_Pt_gF7IHoXzaF51yyN09XLzLVDUNPa7SdHRMNg/exec';
 
 /* Pon 'mango' o 'pina' para modo estricto.
