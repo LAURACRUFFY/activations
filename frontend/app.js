@@ -68,9 +68,23 @@ const PRIZE_POOL = [
   {
     id:    'pack',
     icon:  '🎁',
-    title: 'Un pack di Cruffy gratis',
+    title: 'Pack di Cruffy gratis',
     desc:  'Ritiralo subito da noi — è tuo.',
-    count: 200,
+    count: 10,
+  },
+  {
+    id:    'preworkout',
+    icon:  '⚡',
+    title: 'Snack pre-allenamento gratis',
+    desc:  'Il carburante perfetto prima di allenarti.',
+    count: 10,
+  },
+  {
+    id:    'pina',
+    icon:  '🍍',
+    title: 'Assaggia il gusto Ananas',
+    desc:  'Un assaggio del sapore Ananas, qui con noi.',
+    count: 10,
   },
 ];
 
