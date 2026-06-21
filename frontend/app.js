@@ -24,9 +24,9 @@
    ─────────────────────────────────────────────── */
 
 const P       = new URLSearchParams(location.search);
-const EVENTO  = P.get('evento')  || 'milago-milano';
-const CODE    = P.get('code')    || 'CRUFFYMILAGO';
-const PARTNER = P.get('partner') || 'Milago';
+const EVENTO  = P.get('evento')  || 'hacienda-garden-edit';
+const CODE    = P.get('code')    || 'CRUFFYHACIENDA';
+const PARTNER = P.get('partner') || 'Hacienda';
 const GAS_URL = P.get('sheet')   || 'https://script.google.com/macros/s/AKfycbwEWvXXhW_0uQlVgCQN0UkYahNBllE_Pt_gF7IHoXzaF51yyN09XLzLVDUNPa7SdHRMNg/exec';
 
 /* ─── Cruffy backend integration ───────────────
@@ -73,18 +73,11 @@ const PRIZE_POOL = [
     count: 10,
   },
   {
-    id:    'preworkout',
-    icon:  '⚡',
-    title: 'Snack pre-allenamento gratis',
-    desc:  'Il carburante perfetto prima di allenarti.',
-    count: 10,
-  },
-  {
-    id:    'pina',
-    icon:  '🍍',
-    title: 'Assaggia il gusto Ananas',
-    desc:  'Un assaggio del sapore Ananas, qui con noi.',
-    count: 10,
+    id:    'drink',
+    icon:  '🍹',
+    title: 'Un drink gratis',
+    desc:  'Offerto dagli amici di Hacienda. Salute!',
+    count: 40,
   },
 ];
 

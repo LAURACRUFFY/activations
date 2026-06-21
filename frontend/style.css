@@ -32,7 +32,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #EDF5F0;
+  background: #E8E4CC;
   color: #1A1A18;
   min-height: 100vh;
   display: flex;
@@ -112,12 +112,12 @@ body {
 .partner-badge {
   display: inline-flex;
   align-items: center;
-  background: #DFF0E8;
-  border: 1px solid #C4D9CD;
+  background: #DDD8B8;
+  border: 1px solid #C4C0A0;
   border-radius: 20px;
   padding: 5px 14px;
   font-size: 12px;
-  color: #527A65;
+  color: #5A6840;
   margin-bottom: 22px;
   width: fit-content;
 }
@@ -131,7 +131,7 @@ body {
 
 .step-sub {
   font-size: 14px;
-  color: #4A7A62;
+  color: #4A5C30;
   line-height: 1.65;
   margin-bottom: 28px;
 }
@@ -140,9 +140,9 @@ body {
 /* ─── 5. Cómo funciona ────────────────────────── */
 
 .how-card {
-  background: #F8FCF9;
-  border: 1px solid #C4D9CD;
-  border-top: 2px solid #2E7D52;
+  background: #F4F0DC;
+  border: 1px solid #C4C0A0;
+  border-top: 2px solid #3D5228;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 28px;
@@ -153,7 +153,7 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #527A65;
+  color: #5A6840;
   margin-bottom: 14px;
 }
 
@@ -183,7 +183,7 @@ body {
 
 .how-text {
   font-size: 14px;
-  color: #4A7A62;
+  color: #4A5C30;
   line-height: 1.45;
 }
 
@@ -199,14 +199,14 @@ body {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #3A5A47;
+  color: #4A5C35;
   display: block;
   margin-bottom: 9px;
 }
 
 .label-optional {
   font-size: 10px;
-  color: #6A8A78;
+  color: #7A8A58;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
@@ -214,8 +214,8 @@ body {
 
 .field input {
   width: 100%;
-  background: #F8FCF9;
-  border: 1.5px solid #C4D9CD;
+  background: #F4F0DC;
+  border: 1.5px solid #C4C0A0;
   border-radius: 12px;
   padding: 14px 16px;
   font-size: 16px;   /* ≥16px evita zoom en iOS */
@@ -226,11 +226,11 @@ body {
 }
 
 .field input:focus {
-  border-color: #2E7D52;
+  border-color: #3D5228;
 }
 
 .field input::placeholder {
-  color: #88B09A;
+  color: #A8AA78;
 }
 
 .field-row {
@@ -241,18 +241,18 @@ body {
 
 .field-note {
   font-size: 11px;
-  color: #6A8A78;
+  color: #7A8A58;
   margin-top: 6px;
   line-height: 1.4;
 }
 
 .alert {
-  background: #EDFAF4;
-  border: 1px solid #A8D8BE;
+  background: #F5F0DC;
+  border: 1px solid #C8C4A0;
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 13px;
-  color: #1A5430;
+  color: #2A3A18;
   margin-bottom: 14px;
   display: none;
 }
@@ -303,8 +303,8 @@ a.btn-primary {
 /* ─── 8. Taste — tarjeta y sabores ───────────── */
 
 .taste-card {
-  background: #F8FCF9;
-  border: 1px solid #C4D9CD;
+  background: #F4F0DC;
+  border: 1px solid #C4C0A0;
   border-top: 2px solid #FFD200;
   border-radius: 20px;
   padding: 32px 24px;
@@ -326,7 +326,7 @@ a.btn-primary {
 
 .taste-desc {
   font-size: 14px;
-  color: #4A7A62;
+  color: #4A5C30;
   line-height: 1.6;
 }
 
@@ -335,7 +335,7 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #527A65;
+  color: #5A6840;
   text-align: center;
   margin-bottom: 18px;
 }
@@ -347,8 +347,8 @@ a.btn-primary {
 }
 
 .flavor-btn {
-  background: #F8FCF9;
-  border: 1.5px solid #C4D9CD;
+  background: #F4F0DC;
+  border: 1.5px solid #C4C0A0;
   border-radius: 20px;
   padding: 30px 14px;
   text-align: center;
@@ -363,8 +363,8 @@ a.btn-primary {
 }
 
 .flavor-btn:hover {
-  border-color: #2E7D52;
-  background: #EDF5F0;
+  border-color: #3D5228;
+  background: #E8E4CC;
 }
 
 .flavor-btn:active {
@@ -390,7 +390,7 @@ a.btn-primary {
 
 .f-desc {
   font-size: 11px;
-  color: #6A8A78;
+  color: #7A8A58;
   margin-top: 4px;
 }
 
@@ -409,15 +409,15 @@ a.btn-primary {
 .spin-ring {
   width: 42px;
   height: 42px;
-  border: 3px solid #C4D9CD;
-  border-top: 3px solid #2E7D52;
+  border: 3px solid #C4C0A0;
+  border-top: 3px solid #3D5228;
   border-radius: 50%;
   animation: spin 0.75s linear infinite;
 }
 
 .spin-text {
   font-size: 14px;
-  color: #4A7A62;
+  color: #4A5C30;
 }
 
 @keyframes spin {
@@ -468,15 +468,15 @@ a.btn-primary {
 }
 
 .ticket {
-  background: #F8FCF9;
-  border: 1px solid #C4D9CD;
+  background: #F4F0DC;
+  border: 1px solid #C4C0A0;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 16px;
 }
 
 .ticket-top {
-  background: #2E7D52;
+  background: #3D5228;
   padding: 12px 20px;
   text-align: center;
 }
@@ -486,7 +486,7 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #80BFA0;
+  color: #96B07A;
   opacity: 0.85;
 }
 
@@ -498,7 +498,7 @@ a.btn-primary {
 
 .t-section {
   padding: 18px 20px;
-  border-bottom: 1px solid #D4E8DC;
+  border-bottom: 1px solid #D8D4B4;
 }
 
 .t-section:last-child {
@@ -510,7 +510,7 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #527A65;
+  color: #5A6840;
   margin-bottom: 12px;
 }
 
@@ -529,7 +529,7 @@ a.btn-primary {
 
 .p-desc {
   font-size: 13px;
-  color: #4A7A62;
+  color: #4A5C30;
 }
 
 .p-price {
@@ -550,8 +550,8 @@ a.btn-primary {
 }
 
 .code-wrap {
-  background: #DFF0E8;
-  border: 1px solid #C4D9CD;
+  background: #DDD8B8;
+  border: 1px solid #C4C0A0;
   border-radius: 12px;
   padding: 16px;
   text-align: center;
@@ -566,7 +566,7 @@ a.btn-primary {
 
 .code-note {
   font-size: 12px;
-  color: #4A7A62;
+  color: #4A5C30;
   margin-top: 4px;
 }
 
@@ -588,7 +588,7 @@ a.btn-primary {
 .btn-shop:hover   { opacity: 0.92; }
 .btn-shop:active  { transform: scale(0.97); opacity: 0.85; }
 .btn-shop:focus-visible {
-  outline: 3px solid #2E7D52;
+  outline: 3px solid #3D5228;
   outline-offset: 3px;
 }
 
@@ -602,7 +602,7 @@ a.btn-primary {
 
 .cd-label {
   font-size: 10px;
-  color: #527A65;
+  color: #5A6840;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 8px;
@@ -615,7 +615,7 @@ a.btn-primary {
 }
 
 .cd-box {
-  background: #DFF0E8;
+  background: #DDD8B8;
   border-radius: 10px;
   padding: 10px 14px;
   min-width: 54px;
@@ -632,7 +632,7 @@ a.btn-primary {
 
 .cd-unit {
   font-size: 9px;
-  color: #527A65;
+  color: #5A6840;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 3px;
@@ -645,8 +645,8 @@ a.btn-primary {
 .btn-ig {
   width: 100%;
   background: transparent;
-  border: 1px solid #C4D9CD;
-  color: #4A7A62;
+  border: 1px solid #C4C0A0;
+  color: #4A5C30;
   border-radius: 14px;
   padding: 15px;
   font-size: 14px;
@@ -661,13 +661,13 @@ a.btn-primary {
 }
 
 .btn-ig:hover {
-  background: #EDF5F0;
+  background: #E8E4CC;
   color: #1A1A18;
-  border-color: #2E7D52;
+  border-color: #3D5228;
 }
 
 .btn-ig:active {
-  background: #EDF5F0;
+  background: #E8E4CC;
   color: #1A1A18;
 }
 
@@ -679,7 +679,7 @@ a.btn-primary {
 .show-note {
   text-align: center;
   font-size: 11px;
-  color: #4A7A62;
+  color: #4A5C30;
   padding-top: 4px;
 }
 
@@ -691,7 +691,7 @@ a.btn-primary {
 .collab-sub {
   font-size: 9px;
   font-weight: 700;
-  color: #527A65;
+  color: #5A6840;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-top: 3px;
@@ -706,7 +706,7 @@ a.btn-primary {
 .collab-times {
   font-size: 22px;
   font-weight: 900;
-  color: #2E7D52;
+  color: #3D5228;
   opacity: 0.6;
   line-height: 1;
 }
@@ -726,7 +726,7 @@ a.btn-primary {
 .collab-sph-city {
   font-size: 8px;
   font-weight: 700;
-  color: #80BFA0;
+  color: #96B07A;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-top: 3px;
@@ -740,14 +740,14 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #80BFA0;
+  color: #96B07A;
   margin-bottom: 8px;
 }
 
 .form-card {
   background: #FFF;
-  border: 1px solid #C4D9CD;
-  border-top: 2.5px solid #2E7D52;
+  border: 1px solid #C4C0A0;
+  border-top: 2.5px solid #3D5228;
   border-radius: 20px;
   padding: 22px 18px 20px;
   margin-bottom: 20px;
@@ -755,35 +755,35 @@ a.btn-primary {
 
 .form-divider {
   height: 1px;
-  background: #D4E8DC;
+  background: #D8D4B4;
   margin: 18px 0 16px;
 }
 
 /* Inputs y labels dentro del form card claro */
 .form-card .field label {
-  color: #3A5A47;
+  color: #4A5C35;
 }
 
 .form-card .label-optional {
-  color: #6A8A78;
+  color: #7A8A58;
 }
 
 .form-card .field input {
-  background: #F5FAF7;
-  border: 1.5px solid #C4D9CD;
+  background: #F2EDD8;
+  border: 1.5px solid #C4C0A0;
   color: #2A1F14;
 }
 
 .form-card .field input::placeholder {
-  color: #88B09A;
+  color: #A8AA78;
 }
 
 .form-card .field input:focus {
-  border-color: #2E7D52;
+  border-color: #3D5228;
 }
 
 .form-card .field-note {
-  color: #6A8A78;
+  color: #7A8A58;
 }
 
 /* ─── 15. IG Gate (step 3) ───────────────────── */
@@ -798,13 +798,13 @@ a.btn-primary {
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: #80BFA0;
+  color: #96B07A;
   margin-bottom: 14px;
 }
 
 .ig-gate-note {
   font-size: 12px;
-  color: #4A7A62;
+  color: #4A5C30;
   margin-top: 12px;
   line-height: 1.55;
 }
@@ -812,8 +812,8 @@ a.btn-primary {
 .btn-unlock {
   width: 100%;
   background: transparent;
-  border: 1px solid #2E7D52;
-  color: #80BFA0;
+  border: 1px solid #3D5228;
+  color: #96B07A;
   border-radius: 14px;
   padding: 14px;
   font-size: 12px;
@@ -825,11 +825,11 @@ a.btn-primary {
   transition: background 0.2s, color 0.2s;
 }
 
-.btn-unlock:hover  { background: #2E7D52; color: #FFF; }
-.btn-unlock:active { background: #1A5C38; color: #FFF; }
+.btn-unlock:hover  { background: #3D5228; color: #FFF; }
+.btn-unlock:active { background: #2A3A1A; color: #FFF; }
 
 .btn-unlock:focus-visible {
-  outline: 3px solid #80BFA0;
+  outline: 3px solid #96B07A;
   outline-offset: 3px;
 }
 
