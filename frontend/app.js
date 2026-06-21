@@ -70,14 +70,14 @@ const PRIZE_POOL = [
     icon:  '🎁',
     title: 'Pack di Cruffy gratis',
     desc:  'Ritiralo subito da noi — è tuo.',
-    count: 10,
+    count: 7,
   },
   {
     id:    'drink',
     icon:  '🍹',
     title: 'Un drink gratis',
     desc:  'Offerto dagli amici di Hacienda. Salute!',
-    count: 40,
+    count: 43,
   },
 ];
 
